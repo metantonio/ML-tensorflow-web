@@ -310,7 +310,7 @@ for imange, etiqueta in datos_entrenamiento:
     Y.append(etiqueta)
 ```
 
-A continuación debemos normalizar los valores de los pixeles, de forma que estén entre 0 y 1. Lo podemos hacer con la librería `numpy`
+A continuación debemos normalizar los valores de los pixeles, de forma que estén entre 0 y 1. Lo podemos hacer con la librería `numpy`, y nos aseguramos que ahora los valores que estaban entre 0 y 255 como enteros, ahora estén entre 0 y 1 como flotantes.
 
 ```
 import numpy as np
