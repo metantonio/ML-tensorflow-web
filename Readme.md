@@ -37,6 +37,7 @@ Este repositorio estará basado en la explicación paso a paso en el uso de Tens
   * [Transformación del Dataset](#transformación-del-dataset)
     + [Dimensiones](#dimensiones)
     + [Colores](#colores)
+    + [Buscando la menor Resolución](#buscando-la-menor-resolución)
 - [Referencias](#referencias)
 
 <br/>
@@ -247,7 +248,7 @@ for i, (imagen, etiqueta) in enumerate(datos['train'].take(25)):
 
 <img aling="center" src="./img/12.jpg" />
 
-
+#### Buscando la menor resolución
 
 <!-- Sección de Referencias -->
 <br/>
