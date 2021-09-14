@@ -250,6 +250,12 @@ for i, (imagen, etiqueta) in enumerate(datos['train'].take(25)):
 
 #### Buscando la menor resolución
 
+Es importante reducir la resolución o de las fotos, o aumentarlas, hasta el mínimo punto posible en que nosotros aún podamos distinguir entre perros y gatos en escala de grises. Esto ayuda a la red neuronal a trabajar mejor y más rápido.
+
+Para el ejemplo del tutorial, se dejará la resolución en 100x100 pixeles, tal que:
+
+`TAMANO_IMG=100`
+
 <!-- Sección de Referencias -->
 <br/>
 <br/>
