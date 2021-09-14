@@ -138,6 +138,18 @@ for i, (imagen, etiqueta) in enumerate(datos['train'].take(1)):
 ```
 <img aling="center" src="./img/07.jpg" />
 
+Si se quisieran mostrar dos imagenes no basta con cambiar el argumento `.take(2)`, es necesario subidividir el espacio de ploteo o impresión usando el método `.subplot(filas, columnas, iteración)` de la siguiente manera.
+
+```
+import matplotlib.pyplot as plt
+
+##Para mostrar dos imagenes hay que subdividir el espacio de ploteo (Metantonio)
+for i, (imagen, etiqueta) in enumerate(datos['train'].take(2)):
+    plt.subplot(1, 2, i+1)
+    plt.imshow(imagen)
+```
+<img aling="center" src="./img/08.jpg" />
+
 
 <!-- Sección de Referencias -->
 <br/>
