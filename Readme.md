@@ -106,7 +106,7 @@ Al hacer esto podemos observar una serie de detalles importantes que vienen enca
 
 Entre los datos, el único no encapsulado en JSON es `homepage`, el cual en este caso indica que el dataset es de microsoft.
 
-Tenemos `image` el cual para este caso es la imagen guardada en un objeto shape(). También está `image/filename`que nos indica que cada una de las imagenes en el dataset tiene un nombre. Por otra parte está `label` quien nos indica que cada imagen del dataset está etiquetada y con 2 clases distinta, sabemos que 0 para gatos y 1 para perros. Finalmente, pero no menos importante, tenemos `total_num-examples` que en este caso refiere a la cantidad de imagenes que tiene el dataset y son 23262 imagenes.
+Tenemos `image` el cual para este caso las imagenes del dataset están guardadas en un objeto Image(). También está `image/filename`que nos indica que cada una de las imagenes en el dataset tiene un nombre. Por otra parte está `label` quien nos indica que cada imagen del dataset está etiquetada y con 2 clases distinta, sabemos que 0 para gatos y 1 para perros. Finalmente, pero no menos importante, tenemos `total_num-examples` que en este caso refiere a la cantidad de imagenes que tiene el dataset y son 23262 imagenes.
 
 #### Observación del Dataset
 
