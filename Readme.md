@@ -51,7 +51,7 @@ Para este tutorial, el dataset a utilizar  estará proporcionado por [TensorFlow
 
 Cabe destacar que en el dataset usado, la etiqueta predefinida como `(0)`corresponde a `Gatos` y `(1)` para `Perros`.
 
-<img src="https://storage.googleapis.com/tfds-data/visualization/fig/cats_vs_dogs-4.0.0.png"/>
+<img src="./img/catdog.png"/>
 
 ## Google Colab
 ### Qué es?
