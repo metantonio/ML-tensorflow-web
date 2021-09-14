@@ -8,7 +8,7 @@
 <br/>
 <p>
     <h1 align="center">
-        <strong>Tutorial de Machine Learning y su aplicación en tiempo real</strong>
+        <strong>Tutorial de Machine Learning y su aplicación en tiempo real (Aún en Desarrollo)</strong>
     </h1>
     <strong>Elaborado por: </strong>
     <a href="https://github.com/metantonio">Antonio Martínez (Metantonio)</a>
