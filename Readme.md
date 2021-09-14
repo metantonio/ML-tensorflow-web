@@ -261,7 +261,29 @@ Para el ejemplo del tutorial, se dejará la resolución en 100x100 pixeles, tal 
 
 Una vez realizada las transformaciones de todo el dataset, es necesario convertirlo en información numérica que TensorFlow pueda interpretar.
 
+A continuación, creamos una variable del tipo lista para almacenar los datos númericos de cada imagen. Basta con abrir un bloque nuevo de código y escribir:
 
+```
+datos_entrenamiento = []
+```
+Lo que haremos a continuación, será recorrer nuestro dataset de imagenes, aplicarles la transformación a 100x100 pixeles a cada una, especificando que sólo tendrán ahora una (1) escala de color (escala de grises), y agregamos cada una de ellas en la lista recién creada.
+
+```
+for i, (imagen, etiqueta) in enumerate(datos['train']):
+    imagen=cv2.resize(imagen.numpy(), (TAMANO_IMG, TAMANO_IMG))
+    imagen=cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
+    imagen= imagen.reshape(100, 100, 1)
+    datos_entrenamiento.append([imagen, etiqueta])
+
+```
+
+Podemos imprimir en primer índice para observar cómo están los datos de la primera imagen del dataset.
+
+```
+datos_entrenamiento[0]
+```
+
+<img aling="center" src="./img/13.jpg" />
 
 <!-- Sección de Referencias -->
 <br/>
