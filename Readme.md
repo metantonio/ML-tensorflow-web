@@ -150,6 +150,32 @@ for i, (imagen, etiqueta) in enumerate(datos['train'].take(2)):
 ```
 <img aling="center" src="./img/08.jpg" />
 
+Claro que, empienzan a surgir poblemas cuando queremos mostrar más, ejemplo si mostramos 25 imagenes, en un espacio de 5 filas por 5 columnas:
+
+```
+import matplotlib.pyplot as plt
+
+##Para mostrar dos imagenes hay que subdividir el espacio de ploteo (Metantonio)
+for i, (imagen, etiqueta) in enumerate(datos['train'].take(25)):
+    plt.subplot(5, 5, i+1)
+    plt.imshow(imagen)
+```
+<img aling="center" src="./img/09.jpg" />
+
+Las imagenes ahora se ven diminutas. Las dividimos en una serie de subespacios, pero por ejemplo, no definimos que tan grande es el espacio sobre el que se están observando. Ese
+espacio es el objeto `figure()`, el cual podemos manipular por ensayo y error hasta dar con las dimensiones que queramos:
+
+```
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(20,20))
+
+##Para mostrar dos imagenes hay que subdividir el espacio de ploteo (Metantonio)
+for i, (imagen, etiqueta) in enumerate(datos['train'].take(25)):
+    plt.subplot(5, 5, i+1)
+    plt.imshow(imagen)
+```
+<img aling="center" src="./img/10.jpg" />
 
 <!-- Sección de Referencias -->
 <br/>
