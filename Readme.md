@@ -40,6 +40,7 @@ Este repositorio estará basado en la explicación paso a paso en el uso de Tens
     + [Buscando la menor Resolución](#buscando-la-menor-resolución)
     + [Conversión del dataset a TensorFlow](#conversión-del-dataset-a-tensorflow)
   * [Preparación de la data para el entrenamiento](#preparación-del-dataset)
+- [Entrenamiento](#entrenamiento)
 - [Referencias](#referencias)
 
 <br/>
@@ -336,6 +337,10 @@ Hacemos una ligera verificación de la información registrada de la variable `X
 X.shape
 ```
 <img align="center" src="./img/16.jpg" />
+
+
+## Entrenamiento
+
 
 <!-- Sección de Referencias -->
 <br/>
