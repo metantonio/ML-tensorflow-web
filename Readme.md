@@ -35,6 +35,8 @@ Este repositorio estará basado en la explicación paso a paso en el uso de Tens
     + [Observación casual del Dataset](#observación-casual-del-dataset)
     + [Observación total del Dataset](#observación-total-del-dataset)
   * [Transformación del Dataset](#transformación-del-dataset)
+    + [Dimensiones](#dimensiones)
+    + [Colores](#colores)
 - [Referencias](#referencias)
 
 <br/>
@@ -194,6 +196,7 @@ for i, (imagen, etiqueta) in enumerate(datos['train'].take(25)):
 ```
 ### Transformación del Dataset
 
+#### Dimensiones
 Al trabajar con una red neuronal para machine learning, la cantidad de neuronas que ésta tenga dependerá de la cantidad de información que le metemos y cómo se la metemos. Como la cantidad de neuronas es siempre fija, lo mejor que podemos hacer es estandarizar los datos de entrada de alguna manera. 
 
 En el caso de las imagenes, la primera idea es redimensionarlas para que todas las imagenes de un dataset tengan las mismas dimensiones, ejemplo 200 píxeles.
@@ -217,6 +220,33 @@ for i, (imagen, etiqueta) in enumerate(datos['train'].take(25)):
     plt.imshow(imagen)
 ```
 <img aling="center" src="./img/11.jpg" />
+
+#### Colores
+
+Las imagenes a color no sólo son más pesadas, también son más complicadas de analizar. Lo mejor es disminuir el nivel de complejidad de la red neuronal, ir transformando poco a poco el dataset en algo que le sea más fácil distinguir, como los contornos de las distintas entidades en una imagen, en otras palabras, aumentar el contraste.
+
+Una de las maneras más simples de aumentar el constraste a la vez que eliminamos la complejidad del color, es trabajar las imagenes en blanco y negro o en escala de grises. Por lo que nos vamos aprovechar de la librería cv2 y del método `.cvtColor()`, tal que:
+
+```
+import matplotlib.pyplot as plt
+import cv2
+
+plt.figure(figsize=(20,20))
+
+TAMANO_IMG=200
+
+##Para mostrar dos imagenes hay que subdividir el espacio de ploteo (Metantonio)
+for i, (imagen, etiqueta) in enumerate(datos['train'].take(25)):
+    imagen=cv2.resize(imagen.numpy(), (TAMANO_IMG, TAMANO_IMG))
+    imagen=cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
+    plt.subplot(5, 5, i+1)
+    plt.xticks([])
+    plt.yticks([])
+    plt.imshow(imagen, cmap='gray')
+```
+
+<img aling="center" src="./img/12.jpg" />
+
 
 
 <!-- Sección de Referencias -->
