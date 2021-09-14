@@ -34,6 +34,7 @@ Este repositorio estará basado en la explicación paso a paso en el uso de Tens
     + [Análisis de Metadatos](#análisis-de-metadatos)
     + [Observación casual del Dataset](#observación-casual-del-dataset)
     + [Observación total del Dataset](#observación-total-del-dataset)
+  * [Transformación del Dataset](#transformación-del-dataset)
 - [Referencias](#referencias)
 
 <br/>
@@ -107,7 +108,7 @@ Al hacer esto podemos observar una serie de detalles importantes que vienen enca
 
 Entre los datos, el único no encapsulado en JSON es `homepage`, el cual en este caso indica que el dataset es de microsoft.
 
-Tenemos `image` el cual para este caso las imagenes del dataset están guardadas en un objeto Image(). También está `image/filename`que nos indica que cada una de las imagenes en el dataset tiene un nombre. Por otra parte está `label` quien nos indica que cada imagen del dataset está etiquetada y con 2 clases distinta, sabemos que 0 para gatos y 1 para perros. Finalmente, pero no menos importante, tenemos `total_num-examples` que en este caso refiere a la cantidad de imagenes que tiene el dataset y son 23262 imagenes.
+Tenemos `image` el cual para este caso las imagenes del dataset están guardadas en un objeto Image(). También está `image/filename`que nos indica que cada una de las imagenes en el dataset tiene un nombre. Por otra parte está `label` quien nos indica que cada imagen del dataset está etiquetada y con 2 clases distinta, sabemos que 0 para gatos y 1 para perros. Finalmente, pero no menos importante, tenemos `total_num_examples` que en este caso refiere a la cantidad de imagenes que tiene el dataset y son 23262 imagenes.
 
 #### Observación casual del Dataset
 
@@ -176,6 +177,22 @@ for i, (imagen, etiqueta) in enumerate(datos['train'].take(25)):
     plt.imshow(imagen)
 ```
 <img aling="center" src="./img/10.jpg" />
+
+En este caso en particular, no son interesan las graduaciones de la cantidad de pixeles en el eje X y eje Y de cada imagen. Así que podríamos eliminarlas colocando como arreglo vacío los `.xticks([])` y `.yticks([])`, sólo como ejemplo:
+
+```
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(20,20))
+
+##Para mostrar dos imagenes hay que subdividir el espacio de ploteo (Metantonio)
+for i, (imagen, etiqueta) in enumerate(datos['train'].take(25)):
+    plt.subplot(5, 5, i+1)
+    plt.xticks([])
+    plt.yticks([])
+    plt.imshow(imagen)
+```
+### Transformación del Dataset
 
 <!-- Sección de Referencias -->
 <br/>
