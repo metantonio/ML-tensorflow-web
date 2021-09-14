@@ -194,6 +194,31 @@ for i, (imagen, etiqueta) in enumerate(datos['train'].take(25)):
 ```
 ### Transformación del Dataset
 
+Al trabajar con una red neuronal para machine learning, la cantidad de neuronas que ésta tenga dependerá de la cantidad de información que le metemos y cómo se la metemos. Como la cantidad de neuronas es siempre fija, lo mejor que podemos hacer es estandarizar los datos de entrada de alguna manera. 
+
+En el caso de las imagenes, la primera idea es redimensionarlas para que todas las imagenes de un dataset tengan las mismas dimensiones, ejemplo 200 píxeles.
+
+En necesario importar la librería `cv2` en Google Colab, aunque si se trabajase en local, se podría con la librería `opencv-python`:
+
+```
+import matplotlib.pyplot as plt
+import cv2
+
+plt.figure(figsize=(20,20))
+
+TAMANO_IMG=200
+
+##Para mostrar dos imagenes hay que subdividir el espacio de ploteo (Metantonio)
+for i, (imagen, etiqueta) in enumerate(datos['train'].take(25)):
+    imagen=cv2.resize(imagen.numpy(), (TAMANO_IMG, TAMANO_IMG))
+    plt.subplot(5, 5, i+1)
+    plt.xticks([])
+    plt.yticks([])
+    plt.imshow(imagen)
+```
+<img aling="center" src="./img/11.jpg" />
+
+
 <!-- Sección de Referencias -->
 <br/>
 <br/>
