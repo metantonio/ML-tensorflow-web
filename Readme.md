@@ -321,6 +321,16 @@ X = np.array(X).astype(float) / 255
 X[0]
 ```
 
+<img aling="center" src="./img/14.jpg" />
+
+Por otro lado, si imprimimos los valores de `Y`, nos daremos cuenta que están en forma de Tensores. Por lo que debemos reconvertirlos a un formato simple de arreglos comunes y corrientes:
+
+```
+Y = np.array(Y)
+```
+<img aling="center" src="./img/15.jpg" />
+
+
 <!-- Sección de Referencias -->
 <br/>
 <br/>
