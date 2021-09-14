@@ -299,6 +299,28 @@ len(datos_entrenamiento)
 
 ### Preparación del Dataset
 
+Empezaremos por crear dos variables del tipo lista, en la que almacenaramos los pixeles de las imagenes del dataset, y las etiquetas de cada una.
+
+```
+X = [] #pixeles de las imagenes de entrada
+Y = [] #etiquetas (perros=1 y gatos=0)
+
+for imange, etiqueta in datos_entrenamiento:
+    X.append(imagen)
+    Y.append(etiqueta)
+```
+
+A continuación debemos normalizar los valores de los pixeles, de forma que estén entre 0 y 1. Lo podemos hacer con la librería `numpy`
+
+```
+import numpy as np
+
+X = np.array(X).astype(float) / 255
+
+#Muestro el valor de los pixeles de la primera imagen
+X[0]
+```
+
 <!-- Sección de Referencias -->
 <br/>
 <br/>
