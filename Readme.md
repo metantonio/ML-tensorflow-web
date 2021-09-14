@@ -38,6 +38,7 @@ Este repositorio estará basado en la explicación paso a paso en el uso de Tens
     + [Dimensiones](#dimensiones)
     + [Colores](#colores)
     + [Buscando la menor Resolución](#buscando-la-menor-resolución)
+    + [Conversión del dataset a TensorFlow](#conversión-del-dataset-a-tensorflow)
 - [Referencias](#referencias)
 
 <br/>
@@ -255,6 +256,12 @@ Es importante reducir la resolución o de las fotos, o aumentarlas, hasta el mí
 Para el ejemplo del tutorial, se dejará la resolución en 100x100 pixeles, tal que:
 
 `TAMANO_IMG=100`
+
+#### Conversión del dataset a TensorFlow
+
+Una vez realizada las transformaciones de todo el dataset, es necesario convertirlo en información numérica que TensorFlow pueda interpretar.
+
+
 
 <!-- Sección de Referencias -->
 <br/>
