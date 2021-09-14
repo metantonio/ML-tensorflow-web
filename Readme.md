@@ -39,6 +39,7 @@ Este repositorio estará basado en la explicación paso a paso en el uso de Tens
     + [Colores](#colores)
     + [Buscando la menor Resolución](#buscando-la-menor-resolución)
     + [Conversión del dataset a TensorFlow](#conversión-del-dataset-a-tensorflow)
+  * [Preparación de la data para el entrenamiento](#preparación-del-dataset)
 - [Referencias](#referencias)
 
 <br/>
@@ -283,7 +284,20 @@ Podemos imprimir en primer índice para observar cómo están los datos de la pr
 datos_entrenamiento[0]
 ```
 
+
 <img aling="center" src="./img/13.jpg" />
+
+
+Observamos que, los pixeles de la imagen están ordenados en una escala de color de grises agrupadas por 3 canales (RGB), que pueden ir del valor 0 al 255. Por otro lado, en el array habrá una propiedad llamada `numpy=1`, que implica que la imagen en el índice 0 corresponde a un perro.
+
+Recordar que si queremos conocer la longitud del array, sólo debemos hacer:
+
+```
+len(datos_entrenamiento)
+```
+**Ahora se deben preparar mejor los datos para poderlos entrenar.**
+
+### Preparación del Dataset
 
 <!-- Sección de Referencias -->
 <br/>
