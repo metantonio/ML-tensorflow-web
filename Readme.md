@@ -269,22 +269,7 @@ Una vez realizada las transformaciones de todo el dataset, es necesario converti
 
 ## Referencias
 
-<details>
-    <summary>
-      Referencias:
-    </summary>
-    <!-- ref 1-->
-    <a href="https://brax.gg/deep-learning-with-tensor-flow-and-keras-cats-and-dogs/" >
-      <h4 href="https://brax.gg/deep-learning-with-tensor-flow-and-keras-cats-and-dogs/">
-      - Redes Neuronales Convolucionales para clasificación por color, bordes y texturas en imagenes con Python.
-      </h4>
-    </a>
-    <!-- ref 2-->
-    <a href="https://www.tensorflow.org/?hl=es-419" >
-      <h4 href="https://www.tensorflow.org/?hl=es-419">
-      - TensorFLow.
-      </h4>
-    </a>
+[- Redes Neuronales Convolucionales para clasificación por color, bordes y texturas en imagenes con Python.](https://brax.gg/deep-learning-with-tensor-flow-and-keras-cats-and-dogs/)
+
+[- TensorFLow.](https://www.tensorflow.org/?hl=es-419)
     
-  </details>
-<!-- Fin de Referencias -->
