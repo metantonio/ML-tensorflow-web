@@ -45,6 +45,9 @@ Este repositorio estará basado en la explicación paso a paso en el uso de Tens
     + [Red Neuronal Densa](#red-neuronal-densa)
     + [Red Neuronal Convolucional](#red-neuronal-convolucional)
     + [Red Neuronal Convolucional con Dropout](#red-neuronal-convolucional-dropout)
+    + [Compilación de los modelos](#compilación-de-los-modelos)
+    + [Visualización de los modelos](#visualización-de-los-modelos)
+    + [Empezar Entrenamiento](#empezar-entrenamiento)
 - [Referencias](#referencias)
 
 <br/>
@@ -417,6 +420,61 @@ modeloCNN2 = tf.keras.models.Sequential([
 
 <p align="center">
     <img align="center" src="./img/19.jpg" />
+</p>
+
+### Compilación de los Modelos
+
+Compilaremos los modelos que tenemos hasta ahora, con el optimizador [`adam`](https://keras.io/api/optimizers/adam/), el cual funciona con descenso del gradiente estimando derivadas de primer y segundo orden, de forma que:
+
+```
+modeloDenso.compile(optimizer='adam', 
+    loss='binary_crossentropy', #Función de pérdida para resultados binarios
+    metrics=['accuracy']
+    )
+
+modeloCNN.compile(optimizer='adam', 
+    loss='binary_crossentropy', #Función de pérdida para resultados binarios
+    metrics=['accuracy']
+    )
+
+modeloCNN2.compile(optimizer='adam', 
+    loss='binary_crossentropy', #Función de pérdida para resultados binarios
+    metrics=['accuracy']
+    )
+```
+<p align="center">
+    <img align="center" src="./img/20.jpg" />
+</p>
+
+### Visualización de los Modelos
+
+Para la visualización gráfica de los modelos, vamos a importar `TensorBoard`, de la siguiente manera:
+
+```
+from tensorflow.keras.callbacks import TensorBoard
+```
+
+### Empezar entrenamiento
+
+Primero crearemos una variable para almacenar los resultados de cada iteración de la red neuronal y poderlos visualizar en una gráfica, esto se hace para cada modelo de red neuronal:
+
+```
+tensorboardDenso = TensorBoard(log_dir='logs/denso') #guarda los resultados de la red densa en la carpeta denso
+```
+
+Entrenamos el modelo con el método `.fit()`
+
+```
+modeloDenso.fit(X, #Variables inputs
+    Y, #Etiquetas (resultados esperados)
+    batch_size=32,
+    validation_split=0.15, #entrenará la red con el 85% de datos, y 15% servirá para validar lo aprendido
+    epochs=100,
+    callbacks=[tensorboardDenso]
+    )
+```
+<p align="center">
+    <img align="center" src="./img/21.jpg" />
 </p>
 
 
