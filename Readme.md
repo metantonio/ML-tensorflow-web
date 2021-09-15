@@ -193,7 +193,7 @@ for i, (imagen, etiqueta) in enumerate(datos['train'].take(25)):
 ```
 <img aling="center" src="./img/10.jpg" />
 
-En este caso en particular, no son interesan las graduaciones de la cantidad de pixeles en el eje X y eje Y de cada imagen. Así que podríamos eliminarlas colocando como arreglo vacío los `.xticks([])` y `.yticks([])`, sólo como ejemplo:
+En este caso en particular, no nos interesan las graduaciones de la cantidad de pixeles en el eje X y eje Y de cada imagen. Así que podríamos eliminarlas colocando como arreglo vacío los `.xticks([])` y `.yticks([])`, sólo como ejemplo:
 
 ```
 import matplotlib.pyplot as plt
@@ -415,7 +415,7 @@ modeloCNN = tf.keras.models.Sequential([
 Es exactamente igual a la red neuronal convolucional con la diferencia en que existe una probabilidad que durante alguna de las iteraciones algunas neuronas de las capas ocultas se desactiven, obligando a la red neuronal a usar otras neuronas. Es recomendable que la capa densa tenga cerca del doble de neuronas o más de lo que tendría la red sin el DropOut.
 
 ```
-#El DropOut es del 50%, por esa razón necesita el doble de neuronas
+#El DropOut es del 50%, por esa razón necesita el doble, o más, de neuronas
 
 modeloCNN2 = tf.keras.models.Sequential([
   tf.keras.layers.Conv2D(32, (3,3), activation='relu', input_shape=(100, 100, 1)),
