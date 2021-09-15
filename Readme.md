@@ -53,6 +53,8 @@ Este repositorio estará basado en la explicación paso a paso en el uso de Tens
     + [Red Neuronal Densa](#red-neuronal-densa-ad)
     + [Red Neuronal Convolucional](#red-neuronal-convolucional-ad)
     + [Red Neuronal Convolucional con Dropout](#red-neuronal-convolucional-dropout-ad)
+    + [Compilación de los modelos AD](#compilación-de-los-modelos-ad)
+    + [Empezar Entrenamiento AD](#empezar-entrenamiento-ad)
 - [Referencias](#referencias)
 
 <br/>
@@ -611,9 +613,88 @@ for imagen, etiqueta in datagen.flow(X, y, batch_size=10, shuffle=False):
 ```
 
 #### Red Neuronal Densa AD
+
+Definimos la red densa aumentada:
+
+```
+modeloDenso_AD = tf.keras.models.Sequential([
+  tf.keras.layers.Flatten(input_shape=(100, 100, 1)),
+  tf.keras.layers.Dense(150, activation='relu'),
+  tf.keras.layers.Dense(150, activation='relu'),
+  tf.keras.layers.Dense(1, activation='sigmoid')
+])
+```
 #### Red Neuronal Convolucional AD
+
+```
+modeloCNN_AD = tf.keras.models.Sequential([
+  tf.keras.layers.Conv2D(32, (3,3), activation='relu', input_shape=(100, 100, 1)),
+  tf.keras.layers.MaxPooling2D(2, 2),
+  tf.keras.layers.Conv2D(64, (3,3), activation='relu'),
+  tf.keras.layers.MaxPooling2D(2, 2),
+  tf.keras.layers.Conv2D(128, (3,3), activation='relu'),
+  tf.keras.layers.MaxPooling2D(2, 2),
+
+  tf.keras.layers.Flatten(),
+  tf.keras.layers.Dense(100, activation='relu'),
+  tf.keras.layers.Dense(1, activation='sigmoid')
+])
+```
 #### Red Neuronal Convolucional Dropout AD
 
+```
+modeloCNN2_AD = tf.keras.models.Sequential([
+  tf.keras.layers.Conv2D(32, (3,3), activation='relu', input_shape=(100, 100, 1)),
+  tf.keras.layers.MaxPooling2D(2, 2),
+  tf.keras.layers.Conv2D(64, (3,3), activation='relu'),
+  tf.keras.layers.MaxPooling2D(2, 2),
+  tf.keras.layers.Conv2D(128, (3,3), activation='relu'),
+  tf.keras.layers.MaxPooling2D(2, 2),
+
+  tf.keras.layers.Dropout(0.5),
+  tf.keras.layers.Flatten(),
+  tf.keras.layers.Dense(250, activation='relu'),
+  tf.keras.layers.Dense(1, activation='sigmoid')
+])
+```
+### Compilación de los Modelos AD
+```
+modeloDenso_AD.compile(optimizer='adam',
+                    loss='binary_crossentropy',
+                    metrics=['accuracy'])
+
+modeloCNN_AD.compile(optimizer='adam',
+                    loss='binary_crossentropy',
+                    metrics=['accuracy'])
+
+modeloCNN2_AD.compile(optimizer='adam',
+                    loss='binary_crossentropy',
+                    metrics=['accuracy'])
+```
+
+
+### Empezar entrenamiento AD
+
+Como hemos generado data nueva en el dataset, debemos separar manualmente los datos de validación de los datos que usaremos de entrenamiento, por lo que crearemos variables nuevas `X_entrenamiento` y `X_validación`, de igual manera con las etiquetas, `y_entrenamiento` y `y_validación`.
+
+```
+#Separar los datos de entrenamiento y los datos de pruebas en variables diferentes
+
+len(X) * .85 #19700
+len(X) - 19700 #3562
+
+X_entrenamiento = X[:19700]
+X_validacion = X[19700:]
+
+y_entrenamiento = y[:19700]
+y_validacion = y[19700:]
+```
+
+```
+#Usar la funcion flow del generador para crear un iterador que podamos enviar como entrenamiento a la funcion FIT del modelo
+
+data_gen_entrenamiento = datagen.flow(X_entrenamiento, y_entrenamiento, batch_size=32)
+```
 
 <!-- Sección de Referencias -->
 <br/>
