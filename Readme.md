@@ -748,7 +748,7 @@ modeloCNN2_AD.fit(
 
 Si has analizado los modelos, probablemente llegaste a la conclusión de que entre los 6 modelos evaluados, el de **la red convolucional con datos aumentados** es aquella con mejor comportamiento.
 
-Si te perdiste, echa un vistazo rápido a la siguiente imagen, en la que se muestran los gráficos de precisión entre el entrenamiento y datos de validación, y el gráfico de la función de pérdida entre los datos de entrenamiento y los de validación.
+Si te perdiste, echa un vistazo rápido a la siguiente imagen, en la que se muestran los gráficos de precisión entre el entrenamiento y datos de validación, y el gráfico de la función de pérdida entre los datos de entrenamiento y los de validación, para **la red convolucional con datos aumentados** .
 
 
 <p align="center">
