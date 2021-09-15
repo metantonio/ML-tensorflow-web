@@ -315,11 +315,11 @@ Empezaremos por crear dos variables del tipo lista, en la que almacenaramos los 
 
 ```
 X = [] #pixeles de las imagenes de entrada
-Y = [] #etiquetas (perros=1 y gatos=0)
+y = [] #etiquetas (perros=1 y gatos=0)
 
 for imagen, etiqueta in datos_entrenamiento:
     X.append(imagen)
-    Y.append(etiqueta)
+    y.append(etiqueta)
 ```
 
 A continuación debemos normalizar los valores de los pixeles, de forma que estén entre 0 y 1. Lo podemos hacer con la librería `numpy`, y nos aseguramos que ahora los valores que estaban entre 0 y 255 como enteros, ahora estén entre 0 y 1 como flotantes.
@@ -338,7 +338,7 @@ X[0]
 Por otro lado, si imprimimos los valores de `Y`, nos daremos cuenta que están en forma de Tensores. Por lo que debemos reconvertirlos a un formato simple de arreglos comunes y corrientes:
 
 ```
-Y = np.array(Y)
+y = np.array(y)
 ```
 <img align="center" src="./img/15.jpg" />
 
@@ -368,11 +368,14 @@ En una red densa, cada neurona de la capa está conectada con todas las neuronas
 Para aplicar una red neuronal densa con la librería de TensorFlow, aplicamos los componenente de modelos predefinidos **KERAS**, los cuales podemos armar como legos. Por ejemplo, para hacer una red densa con una capa de entrada, dos capas ocultas con 150 neuronas cada una que servirán para analizar los 10.000 pixeles (100x100) y el contraste de los bordes por la escala de grises, y una capa de salida de 1 neurona que nos dirá si la imagen es perro o gato, debemos hacer lo siguiente:
 
 ```
+#Sigmoid regresa siempre datos entre 0 y 1. Realizamos el entrenamiento para al final considerar que si la respuesta se
+#acerca a 0, es un gato, y si se acerca a 1, es un perro.
+
 modeloDenso = tf.keras.models.Sequential([
-    tf.keras.layers.Flatten(input_shape=(100,100,1)), #capa de entrada
-    tf.keras.layers.Dense(150, activation='relu'), #capa oculta 1
-    tf.keras.layers.Dense(150, activation='relu'), #capa oculta 2
-    tf.keras.layers.Dense(1, activation='sigmoid'), #Sigmoid devuelve entre 0 y 1
+  tf.keras.layers.Flatten(input_shape=(100, 100, 1)),
+  tf.keras.layers.Dense(150, activation='relu'),
+  tf.keras.layers.Dense(150, activation='relu'),
+  tf.keras.layers.Dense(1, activation='sigmoid')
 ])
 ```
 <p align="center">
@@ -385,17 +388,22 @@ Las redes neuronales convolucionales consisten en múltiples capas de filtros co
 Como redes de clasificación, al principio se encuentra la fase de extracción de características, compuesta de neuronas convolucionales y de reducción de muestreo. Al final de la red se encuentran neuronas de perceptron sencillas para realizar la clasificación final sobre las características extraídas. La fase de extracción de características se asemeja al proceso estimulante en las células de la corteza visual. Esta fase se compone de capas alternas de neuronas convolucionales y neuronas de reducción de muestreo. Según progresan los datos a lo largo de esta fase, se disminuye su dimensionalidad, siendo las neuronas en capas lejanas mucho menos sensibles a perturbaciones en los datos de entrada, pero al mismo tiempo siendo estas activadas por características cada vez más complejas.
 
 ```
-modeloCNN = tf.keras.models.Sequential([
-    tf.keras.layers.Conv2D(32, (3,3), activation='relu', input_shape=(100,100,1)), #capa de entrada de 32 filtros
-    tf.keras.layers.MaxPooling2D(2,2), #muestreo de la imagen con matrices 2x2 y el resultado del promedio de estas
-    tf.keras.layers.Conv2D(64, (3,3), activation='relu'), #capa oculta 1
-    tf.keras.layers.MaxPooling2D(2,2),
-    tf.keras.layers.Conv2D(128, (3,3), activation='relu'), #capa oculta 2
-    tf.keras.layers.MaxPooling2D(2,2),
+#La capa de entrada tiene 32 filtros, luego un proceso
+#de MaxPooling en el que una submatriz de 2x2 recorre la 
+#imagen y saca un promedio del valor de los pixeles, es una
+#manera de aprender de los objetos más que de los contornos.
 
-    tf.keras.layers.Flatten(),
-    tf.keras.layers.Dense(100, activation='relu'),
-    tf.keras.layers.Dense(1, activation='sigmoid') #Sigmoid devuelve entre 0 y 1
+modeloCNN = tf.keras.models.Sequential([
+  tf.keras.layers.Conv2D(32, (3,3), activation='relu', input_shape=(100, 100, 1)),
+  tf.keras.layers.MaxPooling2D(2, 2),
+  tf.keras.layers.Conv2D(64, (3,3), activation='relu'),
+  tf.keras.layers.MaxPooling2D(2, 2),
+  tf.keras.layers.Conv2D(128, (3,3), activation='relu'),
+  tf.keras.layers.MaxPooling2D(2, 2),
+
+  tf.keras.layers.Flatten(),
+  tf.keras.layers.Dense(100, activation='relu'),
+  tf.keras.layers.Dense(1, activation='sigmoid')
 ])
 ```
 
@@ -407,18 +415,20 @@ modeloCNN = tf.keras.models.Sequential([
 Es exactamente igual a la red neuronal convolucional con la diferencia en que existe una probabilidad que durante alguna de las iteraciones algunas neuronas de las capas ocultas se desactiven, obligando a la red neuronal a usar otras neuronas. Es recomendable que la capa densa tenga cerca del doble de neuronas o más de lo que tendría la red sin el DropOut.
 
 ```
-modeloCNN2 = tf.keras.models.Sequential([
-    tf.keras.layers.Conv2D(32, (3,3), activation='relu', input_shape=(100,100,1)), #capa de entrada de 32 filtros
-    tf.keras.layers.MaxPooling2D(2,2), #muestreo de la imagen con matrices 2x2 y el resultado del promedio de estas
-    tf.keras.layers.Conv2D(64, (3,3), activation='relu'), #capa oculta 1
-    tf.keras.layers.MaxPooling2D(2,2),
-    tf.keras.layers.Conv2D(128, (3,3), activation='relu'), #capa oculta 2
-    tf.keras.layers.MaxPooling2D(2,2),
+#El DropOut es del 50%, por esa razón necesita el doble de neuronas
 
-    tf.keras.layers.Dropout(0.5), #aplica el dropout antes de pasar a la siguiente capa
-    tf.keras.layers.Flatten(),
-    tf.keras.layers.Dense(250, activation='relu'),
-    tf.keras.layers.Dense(1, activation='sigmoid') #Sigmoid devuelve entre 0 y 1
+modeloCNN2 = tf.keras.models.Sequential([
+  tf.keras.layers.Conv2D(32, (3,3), activation='relu', input_shape=(100, 100, 1)),
+  tf.keras.layers.MaxPooling2D(2, 2),
+  tf.keras.layers.Conv2D(64, (3,3), activation='relu'),
+  tf.keras.layers.MaxPooling2D(2, 2),
+  tf.keras.layers.Conv2D(128, (3,3), activation='relu'),
+  tf.keras.layers.MaxPooling2D(2, 2),
+
+  tf.keras.layers.Dropout(0.5),
+  tf.keras.layers.Flatten(),
+  tf.keras.layers.Dense(250, activation='relu'),
+  tf.keras.layers.Dense(1, activation='sigmoid')
 ])
 ```
 
@@ -431,18 +441,20 @@ modeloCNN2 = tf.keras.models.Sequential([
 Compilaremos los modelos que tenemos hasta ahora, con el optimizador [`adam`](https://keras.io/api/optimizers/adam/), el cual funciona con descenso del gradiente estimando derivadas de primer y segundo orden, de forma que:
 
 ```
+#binary_crossentropy es la función de pérdida para resultados binarios
+
 modeloDenso.compile(optimizer='adam', 
-    loss='binary_crossentropy', #Función de pérdida para resultados binarios
+    loss='binary_crossentropy', 
     metrics=['accuracy']
     )
 
 modeloCNN.compile(optimizer='adam', 
-    loss='binary_crossentropy', #Función de pérdida para resultados binarios
+    loss='binary_crossentropy',
     metrics=['accuracy']
     )
 
 modeloCNN2.compile(optimizer='adam', 
-    loss='binary_crossentropy', #Función de pérdida para resultados binarios
+    loss='binary_crossentropy',
     metrics=['accuracy']
     )
 ```
@@ -469,7 +481,7 @@ tensorboardDenso = TensorBoard(log_dir='logs/denso') #guarda los resultados de l
 Entrenamos el modelo con el método `.fit()`
 
 ```
-modeloDenso.fit(X, Y, batch_size=32,
+modeloDenso.fit(X, y, batch_size=32,
                 validation_split=0.15,
                 epochs=100,
                 callbacks=[tensorboardDenso])
