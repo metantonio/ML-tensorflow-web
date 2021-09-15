@@ -280,10 +280,12 @@ datos_entrenamiento = []
 Lo que haremos a continuación, será recorrer nuestro dataset de imagenes, aplicarles la transformación a 100x100 pixeles a cada una, especificando que sólo tendrán ahora una (1) escala de color (escala de grises), y agregamos cada una de ellas en la lista recién creada.
 
 ```
+TAMANO_IMG=100
+
 for i, (imagen, etiqueta) in enumerate(datos['train']):
     imagen=cv2.resize(imagen.numpy(), (TAMANO_IMG, TAMANO_IMG))
     imagen=cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
-    imagen= imagen.reshape(100, 100, 1)
+    imagen= imagen.reshape(TAMANO_IMG, TAMANO_IMG, 1)
     datos_entrenamiento.append([imagen, etiqueta])
 
 ```
@@ -467,13 +469,10 @@ tensorboardDenso = TensorBoard(log_dir='logs/denso') #guarda los resultados de l
 Entrenamos el modelo con el método `.fit()`
 
 ```
-modeloDenso.fit(X, #Variables inputs
-    Y, #Etiquetas (resultados esperados)
-    batch_size=32,
-    validation_split=0.15, #entrenará la red con el 85% de datos, y 15% servirá para validar lo aprendido
-    epochs=100,
-    callbacks=[tensorboardDenso]
-    )
+modeloDenso.fit(X, y, batch_size=32,
+                validation_split=0.15,
+                epochs=100,
+                callbacks=[tensorboardDenso])
 ```
 <p align="center">
     <img align="center" src="./img/21.jpg" />
