@@ -56,6 +56,7 @@ Este repositorio estará basado en la explicación paso a paso en el uso de Tens
     + [Compilación de los modelos AD](#compilación-de-los-modelos-ad)
     + [Empezar Entrenamiento AD](#empezar-entrenamiento-ad)
   * [Selección del Modelo a usar y Exportación](#selección-del-modelo-y-exportación)
+- [Creación Página Web](#creación-página-web)
 - [Referencias](#referencias)
   
 
@@ -758,7 +759,7 @@ Si te perdiste, echa un vistazo rápido a la siguiente imagen, en la que se mues
 
 Elegido el modelo, sólo tienes que entrenarlos por más épocas para que se vuelva más preciso. Por ejemplo, 1000 épocas.
 
-Ya con nuestro modelo bien entrenado, lo primero será guardarlo y colocarle un nombre, usando el método `.save()`. Los modelos se guardan en formato .h5:
+Ya con nuestro modelo bien entrenado, lo primero será guardarlo y colocarle un nombre, usando el método `.save()`. Los modelos se guardan en formato `.h5`:
 
 ```
 modeloCNN_AD.save('perros-gatos-cnn-ad.h5')
@@ -782,12 +783,13 @@ Finalmente, usaremos el convertidor de tensorflowjs para convertir nuestro model
 ```
 !tensorflowjs_converter --input_format keras perros-gatos-cnn-ad.h5 carpeta_salida
 ```
-Y se generarán archivos `.bin` y `model.json` en la carpeta de salida, los cuales debemos descargar para poder usar la red en una página web.
+Y se generarán archivos `.bin` y `model.json` en la carpeta de salida, los cuales debemos descargar para poder usar la red en una página web en tiempo real.
 
 <p align="center">
     <img align="center" src="./img/26.jpg" />
 </p>
 
+## Creación Página Web
 
 <!-- Sección de Referencias -->
 <br/>
