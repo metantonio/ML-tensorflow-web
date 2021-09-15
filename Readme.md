@@ -43,6 +43,8 @@ Este repositorio estará basado en la explicación paso a paso en el uso de Tens
 - [Entrenamiento](#entrenamiento)
   * [Entrenamiento sin aumento de Datos](#entrenamiento-sin-aumento-de-datos)
     + [Red Neuronal Densa](#red-neuronal-densa)
+    + [Red Neuronal Convolucional](#red-neuronal-convolucional)
+    + [Red Neuronal Convolucional con Dropout](#red-neuronal-convolucional-dropout)
 - [Referencias](#referencias)
 
 <br/>
@@ -352,10 +354,45 @@ En el siguiente punto trataremos 3 modelos distintos de Redes Neuronales. En cad
 
 En una red densa, cada neurona de la capa está conectada con todas las neuronas de la siguiente capa. En la siguiente imagen podemos ver la representación gráfica de una red neuronal artificial.
 
-<span align="center">
+<p align="center">
     <img align="center" src="./img/red-n-densa.png" />
-</span>
+</p>
 
+Para aplicar una red neuronal densa con la librería de TensorFlow, aplicamos los componenente de modelos predefinidos **KERAS**, los cuales podemos armar como legos. Por ejemplo, para hacer una red densa con una capa de entrada, dos capas ocultas con 150 neuronas cada una que servirán para analizar los 10.000 pixeles (100x100) y el contraste de los bordes por la escala de grises, y una capa de salida de 1 neurona que nos dirá si la imagen es perro o gato, debemos hacer lo siguiente:
+
+```
+modeloDenso = tf.keras.models.Sequential([
+    tf.keras.layers.Flatten(input_shape=(100,100,1)), #capa de entrada
+    tf.keras.layers.Dense(150, activation='relu'), #capa oculta 1
+    tf.keras.layers.Dense(150, activation='relu'), #capa oculta 2
+    tf.keras.layers.Dense(1, activation='sigmoid'), #Sigmoid devuelve entre 0 y 1
+])
+```
+<p align="center">
+    <img align="center" src="./img/17.jpg" />
+</p>
+
+#### Red Neuronal Convolucional
+Las redes neuronales convolucionales consisten en múltiples capas de filtros convolucionales de una o más dimensiones. Después de cada capa, por lo general se añade una función para realizar un mapeo causal no-lineal.
+
+Como redes de clasificación, al principio se encuentra la fase de extracción de características, compuesta de neuronas convolucionales y de reducción de muestreo. Al final de la red se encuentran neuronas de perceptron sencillas para realizar la clasificación final sobre las características extraídas. La fase de extracción de características se asemeja al proceso estimulante en las células de la corteza visual. Esta fase se compone de capas alternas de neuronas convolucionales y neuronas de reducción de muestreo. Según progresan los datos a lo largo de esta fase, se disminuye su dimensionalidad, siendo las neuronas en capas lejanas mucho menos sensibles a perturbaciones en los datos de entrada, pero al mismo tiempo siendo estas activadas por características cada vez más complejas.
+
+```
+modeloCNN = tf.keras.models.Sequential([
+    tf.keras.layers.Conv2D(32, (3,3), activation='relu', input_shape=(100,100,1)), #capa de entrada de 32 filtros
+    tf.keras.layers.MaxPooling2D(2,2), #muestreo de la imagen con matrices 2x2 y el resultado del promedio de estas
+    tf.keras.layers.Conv2D(64, (3,3), activation='relu'), #capa oculta 1
+    tf.keras.layers.MaxPooling2D(2,2),
+    tf.keras.layers.Conv2D(128, (3,3), activation='relu'), #capa oculta 2
+    tf.keras.layers.MaxPooling2D(2,2),
+
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(100, activation='relu'),
+    tf.keras.layers.Dense(1, activation='sigmoid') #Sigmoid devuelve entre 0 y 1
+])
+```
+
+#### Red Neuronal Convolucional Dropout
 
 <!-- Sección de Referencias -->
 <br/>
