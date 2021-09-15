@@ -50,6 +50,9 @@ Este repositorio estará basado en la explicación paso a paso en el uso de Tens
     + [Empezar Entrenamiento](#empezar-entrenamiento)
   * [Gestión de RAM](#gestión-de-ram)
   * [Entrenamiento con aumento de Datos](#entrenamiento-con-aumento-de-datos)
+    + [Red Neuronal Densa](#red-neuronal-densa-ad)
+    + [Red Neuronal Convolucional](#red-neuronal-convolucional-ad)
+    + [Red Neuronal Convolucional con Dropout](#red-neuronal-convolucional-dropout-ad)
 - [Referencias](#referencias)
 
 <br/>
@@ -548,6 +551,10 @@ import gc
 gc.collect()
 ```
 ### Entrenamiento con aumento de Datos
+
+#### Red Neuronal Densa AD
+#### Red Neuronal Convolucional AD
+#### Red Neuronal Convolucional Dropout AD
 
 
 <!-- Sección de Referencias -->
