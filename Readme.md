@@ -205,7 +205,7 @@ Al trabajar con una red neuronal para machine learning, la cantidad de neuronas 
 
 En el caso de las imagenes, la primera idea es redimensionarlas para que todas las imagenes de un dataset tengan las mismas dimensiones, ejemplo 200x200 píxeles.
 
-En necesario importar la librería `cv2` en Google Colab, aunque si se trabajase en local, se podría con la librería `opencv-python`:
+Es necesario importar la librería `cv2` en Google Colab, aunque si se trabajase en local, se podría con la librería `opencv-python`:
 
 ```
 import matplotlib.pyplot as plt
@@ -306,7 +306,7 @@ Empezaremos por crear dos variables del tipo lista, en la que almacenaramos los 
 X = [] #pixeles de las imagenes de entrada
 Y = [] #etiquetas (perros=1 y gatos=0)
 
-for imange, etiqueta in datos_entrenamiento:
+for imagen, etiqueta in datos_entrenamiento:
     X.append(imagen)
     Y.append(etiqueta)
 ```
