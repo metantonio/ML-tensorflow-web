@@ -604,7 +604,7 @@ plt.figure(figsize=(20,8))
 
 #el batch_size al ser de 10, hace que en la primera
 #iteracion se muestren las 10 imagenes. Por lo tanto,
-#solo hay 1 iteracion 
+#solo hay 1 iteracion en el for-loop más externo
 
 for imagen, etiqueta in datagen.flow(X, y, batch_size=10, shuffle=False):
   for i in range(10):
