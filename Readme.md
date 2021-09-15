@@ -763,6 +763,8 @@ Ya con nuestro modelo bien entrenado, lo primero será guardarlo y colocarle un 
 ```
 modeloCNN_AD.save('perros-gatos-cnn-ad.h5')
 ```
+***Entre los datos guardados por el método .save(), el más importante es acerca de los pesos de cada neurona y la conexión entre éstas que no es más que el orden en que se multiplican las matrices contenedoras de los pesos***
+
 A continuación, como queremos exportarlo a un formato JSON, será necesario instalar tensorflowjs con pip:
 
 ```
@@ -781,7 +783,7 @@ Finalmente, usaremos el convertidor de tensorflowjs para convertir nuestro model
 !tensorflowjs_converter --input_format keras perros-gatos-cnn-ad.h5 carpeta_salida
 ```
 
-***Entre los datos guardados por el método .save(), el más importante es acerca de los pesos de cada neurona y la conexión entre éstas que no es más que el orden en que se multiplican las matrices contenedoras de los pesos***
+
 
 <!-- Sección de Referencias -->
 <br/>
