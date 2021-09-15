@@ -48,6 +48,8 @@ Este repositorio estará basado en la explicación paso a paso en el uso de Tens
     + [Compilación de los modelos](#compilación-de-los-modelos)
     + [Visualización de los modelos](#visualización-de-los-modelos)
     + [Empezar Entrenamiento](#empezar-entrenamiento)
+  * [Gestión de RAM](#gestión-de-ram)
+  * [Entrenamiento con aumento de Datos](#entrenamiento-con-aumento-de-datos)
 - [Referencias](#referencias)
 
 <br/>
@@ -483,6 +485,16 @@ Si todo sale correctamente, en Google Colab se pueden observar los datos con Ten
 %load_ext tensorboard
 %tensorboard --logdir logs
 ```
+### Gestión de RAM
+
+Cuando la memoria RAM esté al máximo en Google Colab, es necesario limpiarla o se puede cerrar la sesión por haber alcanzado el límite, para limpiarla se hace lo siguiente:
+
+```
+import gc
+gc.collect()
+```
+### Entrenamiento con aumento de Datos
+
 
 <!-- Sección de Referencias -->
 <br/>
