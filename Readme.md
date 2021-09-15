@@ -55,7 +55,9 @@ Este repositorio estará basado en la explicación paso a paso en el uso de Tens
     + [Red Neuronal Convolucional con Dropout](#red-neuronal-convolucional-dropout-ad)
     + [Compilación de los modelos AD](#compilación-de-los-modelos-ad)
     + [Empezar Entrenamiento AD](#empezar-entrenamiento-ad)
+  * [Selección del Modelo a usar y Exportación](#selección-del-modelo-y-exportación)
 - [Referencias](#referencias)
+  
 
 <br/>
 <br/>
@@ -695,6 +697,63 @@ y_validacion = y[19700:]
 
 data_gen_entrenamiento = datagen.flow(X_entrenamiento, y_entrenamiento, batch_size=32)
 ```
+Ahora empezamos con el entrenamiento.
+
+Para la red densa:
+
+```
+tensorboardDenso_AD = TensorBoard(log_dir='logs/denso_AD')
+
+modeloDenso_AD.fit(
+    data_gen_entrenamiento,
+    epochs=100, batch_size=32,
+    validation_data=(X_validacion, y_validacion),
+    steps_per_epoch=int(np.ceil(len(X_entrenamiento) / float(32))),
+    validation_steps=int(np.ceil(len(X_validacion) / float(32))),
+    callbacks=[tensorboardDenso_AD]
+)
+```
+
+Para la red convolucional:
+```
+tensorboardCNN_AD = TensorBoard(log_dir='logs-new/cnn_AD')
+
+modeloCNN_AD.fit(
+    data_gen_entrenamiento,
+    epochs=150, batch_size=32,
+    validation_data=(X_validacion, y_validacion),
+    steps_per_epoch=int(np.ceil(len(X_entrenamiento) / float(32))),
+    validation_steps=int(np.ceil(len(X_validacion) / float(32))),
+    callbacks=[tensorboardCNN_AD]
+)
+```
+
+Para la red convolucional con dropout:
+```
+tensorboardCNN2_AD = TensorBoard(log_dir='logs/cnn2_AD')
+
+modeloCNN2_AD.fit(
+    data_gen_entrenamiento,
+    epochs=100, batch_size=32,
+    validation_data=(X_validacion, y_validacion),
+    steps_per_epoch=int(np.ceil(len(X_entrenamiento) / float(32))),
+    validation_steps=int(np.ceil(len(X_validacion) / float(32))),
+    callbacks=[tensorboardCNN2_AD]
+)
+```
+
+***En este punto debemos analizar gráficamente qué sucede con cada modelo de aprendizaje, ver si sufre de sobre-ajuste, y elegir el que más nos conviene.***
+
+## Selección del Modelo y Exportación
+
+Si has analizado los modelos, probablemente llegaste a la conclusión de que entre los 6 modelos evaluados, el de **la red convolucional con datos aumentados** es aquella con mejor comportamiento.
+
+Si te perdiste, echa un vistazo rápido a la siguiente imagen, en la que se muestran los gráficos de precisión entre el entrenamiento y datos de validación, y el gráfico de la función de pérdida entre los datos de entrenamiento y los de validación.
+
+
+<p align="center">
+    <img align="center" src="./img/25.jpg" />
+</p>
 
 <!-- Sección de Referencias -->
 <br/>
