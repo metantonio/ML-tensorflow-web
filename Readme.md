@@ -498,7 +498,19 @@ Si todo sale correctamente, en Google Colab se pueden observar los datos con Ten
 ```
 %tensorboard --logdir logs
 ```
-En esta sección es importante analizar la función de pérdida de la red neuronal al aprender, y la función de pérdida de la red al evaluar ese 15% de datos de validación, esto es lo que garantizará que la red neuronal realmente funcione en el mundo real.
+En esta sección es importante analizar la función de pérdida de la red neuronal al aprender, y la función de pérdida de la red al evaluar ese 15% de datos de validación, esto es lo que garantizará que la red neuronal realmente funcione en el mundo real. (Si en el momento de ejecutar tensorboard no se está usando GPU, no abrirán los gráficos). 
+
+***Lo ideal es que la función de pérdida de los aprendido por las redes neuronales tienda a 0, y que la función de pérdida en la evaluación de los datos de validación también tiendan a 0.***
+
+<p align="center">
+    <img align="center" src="./img/22.jpg" />
+</p>
+
+Como se aprecia en la imagen anterior, aunque la red es buena para memorizar los datos de entrenanimiento, al usar lo aprendido para evaluar los datos de validación, la función de pérdida aumenta, estoy implica que para este problema en específico de clasificar perros y gatos en imagenes, este tipo de Red Neuronal Densa no es buena en el mundo real. A este problema se le conoce como **Sobre-ajuste**.
+
+Llegados a este punto, sólo nos quedan por entrenar las dos redes convolucionales, tal que:
+
+
 
 ### Gestión de RAM
 
