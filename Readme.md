@@ -575,6 +575,40 @@ A continuación, importamos una librería de keras, `ImageDataGenerator`, que no
 ```
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 ```
+Antes de aplicar el código, veamos algunas propiedades para cambiar la forma de las imagenes:
+
+<img align="center" src="./img/options.gif" />
+
+```
+#Realizar el aumento de datos con varias transformaciones. Al final, graficar 10 como ejemplo
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
+datagen = ImageDataGenerator(
+    rotation_range=30,
+    width_shift_range=0.2,
+    height_shift_range=0.2,
+    shear_range=15,
+    zoom_range=[0.7, 1.4],
+    horizontal_flip=True,
+    vertical_flip=True
+)
+
+datagen.fit(X)
+
+plt.figure(figsize=(20,8))
+
+#el batch_size al ser de 10, hace que en la primera
+#iteracion se muestren las 10 imagenes. Por lo tanto,
+#solo hay 1 iteracion 
+ 
+for imagen, etiqueta in datagen.flow(X, y, batch_size=10, shuffle=False):
+  for i in range(10):
+    plt.subplot(2, 5, i+1)
+    plt.xticks([])
+    plt.yticks([])
+    plt.imshow(imagen[i].reshape(100, 100), cmap="gray")
+  break
+```
 
 #### Red Neuronal Densa AD
 #### Red Neuronal Convolucional AD
