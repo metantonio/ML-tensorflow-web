@@ -469,7 +469,7 @@ tensorboardDenso = TensorBoard(log_dir='logs/denso') #guarda los resultados de l
 Entrenamos el modelo con el método `.fit()`
 
 ```
-modeloDenso.fit(X, y, batch_size=32,
+modeloDenso.fit(X, Y, batch_size=32,
                 validation_split=0.15,
                 epochs=100,
                 callbacks=[tensorboardDenso])
