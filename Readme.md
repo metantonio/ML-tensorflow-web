@@ -782,7 +782,11 @@ Finalmente, usaremos el convertidor de tensorflowjs para convertir nuestro model
 ```
 !tensorflowjs_converter --input_format keras perros-gatos-cnn-ad.h5 carpeta_salida
 ```
+Y se generarán archivos `.bin` y `model.json` en la carpeta de salida, los cuales debemos descargar para poder usar la red en una página web.
 
+<p align="center">
+    <img align="center" src="./img/26.jpg" />
+</p>
 
 
 <!-- Sección de Referencias -->
