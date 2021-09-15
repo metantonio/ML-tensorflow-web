@@ -800,4 +800,5 @@ Y se generarán archivos `.bin` y `model.json` en la carpeta de salida, los cual
 [- Redes Neuronales Convolucionales para clasificación por color, bordes y texturas en imagenes con Python.](https://brax.gg/deep-learning-with-tensor-flow-and-keras-cats-and-dogs/)
 
 [- TensorFLow.](https://www.tensorflow.org/?hl=es-419)
-    
+
+[- Ringa-Tech.](https://github.com/ringa-tech)    
