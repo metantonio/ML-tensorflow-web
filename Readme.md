@@ -392,7 +392,33 @@ modeloCNN = tf.keras.models.Sequential([
 ])
 ```
 
+<p align="center">
+    <img align="center" src="./img/18.jpg" />
+</p>
+
 #### Red Neuronal Convolucional Dropout
+Es exactamente igual a la red neuronal convolucional con la diferencia en que existe una probabilidad que durante alguna de las iteraciones algunas neuronas de las capas ocultas se desactiven, obligando a la red neuronal a usar otras de neuronas. Es recomendable que la capa densa tenga cerca del doble de neuronas o más de lo que tendría la red sin el DropOut.
+
+```
+modeloCNN2 = tf.keras.models.Sequential([
+    tf.keras.layers.Conv2D(32, (3,3), activation='relu', input_shape=(100,100,1)), #capa de entrada de 32 filtros
+    tf.keras.layers.MaxPooling2D(2,2), #muestreo de la imagen con matrices 2x2 y el resultado del promedio de estas
+    tf.keras.layers.Conv2D(64, (3,3), activation='relu'), #capa oculta 1
+    tf.keras.layers.MaxPooling2D(2,2),
+    tf.keras.layers.Conv2D(128, (3,3), activation='relu'), #capa oculta 2
+    tf.keras.layers.MaxPooling2D(2,2),
+
+    tf.keras.layers.Dropout(0.5), #aplica el dropout antes de pasar a la siguiente capa
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(250, activation='relu'),
+    tf.keras.layers.Dense(1, activation='sigmoid') #Sigmoid devuelve entre 0 y 1
+])
+```
+
+<p align="center">
+    <img align="center" src="./img/19.jpg" />
+</p>
+
 
 <!-- Sección de Referencias -->
 <br/>
