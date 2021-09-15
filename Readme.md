@@ -552,6 +552,30 @@ gc.collect()
 ```
 ### Entrenamiento con aumento de Datos
 
+El aumento de datos, como su nombre parece sugerir, es una técnica en la que se manipula el dataset de imagenes de forma que se manipulen y/o deformen las mismas sin perder el sentido sobre lo que se muestra. Esto significa, deformar la imagen de perros y gatos pero que aún se noten que siguen siendo perros y gatos.
+
+Primero veamos el dataset que teníamos sin aplicar el aumento de datos todavía:
+
+```
+#ver las imagenes de la variable X sin modificaciones por aumento de datos
+plt.figure(figsize=(20, 8))
+for i in range(10):
+  plt.subplot(2, 5, i+1)
+  plt.xticks([])
+  plt.yticks([])
+  plt.imshow(X[i].reshape(100, 100), cmap="gray")
+```
+
+<p align="center">
+    <img align="center" src="./img/24.jpg" />
+</p>
+
+A continuación, importamos una librería de keras, `ImageDataGenerator`, que nos permite manipular las imagenes para el aumento de datos:
+
+```
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+```
+
 #### Red Neuronal Densa AD
 #### Red Neuronal Convolucional AD
 #### Red Neuronal Convolucional Dropout AD
