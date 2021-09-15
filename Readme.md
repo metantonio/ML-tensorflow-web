@@ -755,6 +755,34 @@ Si te perdiste, echa un vistazo rápido a la siguiente imagen, en la que se mues
     <img align="center" src="./img/25.jpg" />
 </p>
 
+
+Elegido el modelo, sólo tienes que entrenarlos por más épocas para que se vuelva más preciso. Por ejemplo, 1000 épocas.
+
+Ya con nuestro modelo bien entrenado, lo primero será guardarlo y colocarle un nombre, usando el método `.save()`. Los modelos se guardan en formato .h5:
+
+```
+modeloCNN_AD.save('perros-gatos-cnn-ad.h5')
+```
+A continuación, como queremos exportarlo a un formato JSON, será necesario instalar tensorflowjs con pip:
+
+```
+!pip install tensorflowjs
+```
+
+Creamos una carpeta, llamada `carpeta_salida`, para guardar el modelo a convertir:
+
+```
+!mkdir carpeta_salida
+```
+
+Finalmente, usaremos el convertidor de tensorflowjs para convertir nuestro modelo:
+
+```
+!tensorflowjs_converter --input_format keras perros-gatos-cnn-ad.h5 carpeta_salida
+```
+
+***Entre los datos guardados por el método .save(), el más importante es acerca de los pesos de cada neurona y la conexión entre éstas que no es más que el orden en que se multiplican las matrices contenedoras de los pesos***
+
 <!-- Sección de Referencias -->
 <br/>
 <br/>
