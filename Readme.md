@@ -757,7 +757,7 @@ Si te perdiste, echa un vistazo rápido a la siguiente imagen, en la que se mues
 </p>
 
 
-Elegido el modelo, sólo tienes que entrenarlos por más épocas para que se vuelva más preciso. Por ejemplo, 1000 épocas.
+Elegido el modelo, sólo tienes que entrenarlo por más épocas para que se vuelva más preciso. Por ejemplo, 1000 épocas, o **hasta que la pérdida sea igual o menor a 0,02 (equivale al 2% de error) u otro nivel de precisión según se necesite.**
 
 Ya con nuestro modelo bien entrenado, lo primero será guardarlo y colocarle un nombre, usando el método `.save()`. Los modelos se guardan en formato `.h5`:
 
