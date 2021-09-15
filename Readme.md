@@ -41,6 +41,8 @@ Este repositorio estará basado en la explicación paso a paso en el uso de Tens
     + [Conversión del dataset a TensorFlow](#conversión-del-dataset-a-tensorflow)
   * [Preparación de la data para el entrenamiento](#preparación-del-dataset)
 - [Entrenamiento](#entrenamiento)
+  * [Entrenamiento sin aumento de Datos](#entrenamiento-sin-aumento-de-datos)
+    + [Red Neuronal Densa](#red-neuronal-densa)
 - [Referencias](#referencias)
 
 <br/>
@@ -337,9 +339,22 @@ Hacemos una ligera verificación de la información registrada de la variable `X
 X.shape
 ```
 <img align="center" src="./img/16.jpg" />
+<br/><br/>
 
 
 ## Entrenamiento
+
+En el siguiente punto trataremos 3 modelos distintos de Redes Neuronales. En cada una de estas redes neuronales entrenaremos el dataset ya preparado como está, lo que se conoce como ***entrenamiento sin aumento de datos*** y después modificaremos nuevamente el dataset de una manera muy particular, que se conocerá como ***entrenamiento con aumento de datos***.
+
+### Entrenamiento sin aumento de Datos
+
+#### Red Neuronal Densa
+
+En una red densa, cada neurona de la capa está conectada con todas las neuronas de la siguiente capa. En la siguiente imagen podemos ver la representación gráfica de una red neuronal artificial.
+
+<span align="center">
+    <img align="center" src="./img/red-n-densa.png" />
+</span>
 
 
 <!-- Sección de Referencias -->
