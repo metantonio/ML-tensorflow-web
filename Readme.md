@@ -510,7 +510,34 @@ Como se aprecia en la imagen anterior, aunque la red es buena para memorizar los
 
 Llegados a este punto, sólo nos quedan por entrenar las dos redes convolucionales, tal que:
 
+```
+#Modelo Convolucional
 
+tensorboardCNN = TensorBoard(log_dir='logs/cnn')
+modeloCNN.fit(X, y, batch_size=32,
+                validation_split=0.15,
+                epochs=100,
+                callbacks=[tensorboardCNN])
+```
+```
+#Modelo Convolucional con Dropout
+
+tensorboardCNN2 = TensorBoard(log_dir='logs/cnn2')
+modeloCNN2.fit(X, y, batch_size=32,
+                validation_split=0.15,
+                epochs=100,
+                callbacks=[tensorboardCNN2])
+```
+
+Recargando la vista en el TensordBoard ya abierto, y eliminando las escalas, observamos que:
+
+<p align="center">
+    <img align="center" src="./img/23.jpg" />
+</p>
+
+Las 3 funciones de pérdida de las validaciones de datos aumentan, esto quiere decir que los 3 modelos de redes neuronales sin aumento de datos, están sufriendo de **sobre-ajuste**, en otras palabras, no puedes generalizar lo aprendido para usarlo en el mundo real.
+
+En base a esto, se desarrollaron técnicas para la manipulación del dataset ya existente, de forma que la red sea capaz de generalizar los resultados. Pero antes de esto vamos a gestionar la memoria RAM de Google Colab.
 
 ### Gestión de RAM
 
