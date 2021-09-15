@@ -483,8 +483,12 @@ Si todo sale correctamente, en Google Colab se pueden observar los datos con Ten
 
 ```
 %load_ext tensorboard
+```
+```
 %tensorboard --logdir logs
 ```
+En esta sección es importante analizar la función de pérdida de la red neuronal al aprender, y la función de pérdida de la red de pérdida al evaluar ese 15% de datos de validación, esto es lo que garantizará que la red neuronal realmente funcione en el mundo real.
+
 ### Gestión de RAM
 
 Cuando la memoria RAM esté al máximo en Google Colab, es necesario limpiarla o se puede cerrar la sesión por haber alcanzado el límite, para limpiarla se hace lo siguiente:
