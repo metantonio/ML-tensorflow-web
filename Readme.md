@@ -535,7 +535,7 @@ Recargando la vista en el TensordBoard ya abierto, y eliminando las escalas, obs
     <img align="center" src="./img/23.jpg" />
 </p>
 
-Las 3 funciones de pérdida de las validaciones de datos aumentan, esto quiere decir que los 3 modelos de redes neuronales sin aumento de datos, están sufriendo de **sobre-ajuste**, en otras palabras, no puedes generalizar lo aprendido para usarlo en el mundo real.
+Las 3 funciones de pérdida de las validaciones de datos aumentan, esto quiere decir que los 3 modelos de redes neuronales sin aumento de datos, están sufriendo de **sobre-ajuste**, en otras palabras, no pueden generalizar lo aprendido para usarlo en el mundo real.
 
 En base a esto, se desarrollaron técnicas para la manipulación del dataset ya existente, de forma que la red sea capaz de generalizar los resultados. Pero antes de esto vamos a gestionar la memoria RAM de Google Colab.
 
