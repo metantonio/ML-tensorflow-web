@@ -487,7 +487,7 @@ Si todo sale correctamente, en Google Colab se pueden observar los datos con Ten
 ```
 %tensorboard --logdir logs
 ```
-En esta sección es importante analizar la función de pérdida de la red neuronal al aprender, y la función de pérdida de la red de pérdida al evaluar ese 15% de datos de validación, esto es lo que garantizará que la red neuronal realmente funcione en el mundo real.
+En esta sección es importante analizar la función de pérdida de la red neuronal al aprender, y la función de pérdida de la red al evaluar ese 15% de datos de validación, esto es lo que garantizará que la red neuronal realmente funcione en el mundo real.
 
 ### Gestión de RAM
 
