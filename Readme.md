@@ -477,6 +477,12 @@ modeloDenso.fit(X, #Variables inputs
     <img align="center" src="./img/21.jpg" />
 </p>
 
+Si todo sale correctamente, en Google Colab se pueden observar los datos con Tensor Board, para esto cargamos TensorBoard usando el siguiente comando interno de Colab, y le indicamos la carpeta a cargar los datos:
+
+```
+%load_ext tensorboard #Cargamos TensorBoard
+%tensorboard --logdir logs
+```
 
 <!-- Sección de Referencias -->
 <br/>
